@@ -1,4 +1,9 @@
+import withMovies from './mocks/with-results.json'
+// import noMovies from './mocks/no-results.json'
+
 function App() {
+  const data = withMovies
+
   return (
     <div className="page">
       <header>
@@ -9,7 +14,22 @@ function App() {
         </form>
       </header>
       <main>
-        Aqui las Peliculas
+        {
+          data.Response === 'True' ? 
+          <ul>
+            {
+              data.Search.map(movie => (
+                <li key={movie.imdbID}>
+                  <h3>{movie.Title}</h3>
+                  <p>{movie.Year}</p>
+                  <img src={movie.Poster} alt={movie.Title + "'s poster"} />
+                </li>
+              ))
+            }
+          </ul>
+          :
+          <p>No hay resultados para esta busqueda</p>
+        }
       </main>
     </div>
   )
