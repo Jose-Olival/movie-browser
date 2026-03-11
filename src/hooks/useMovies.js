@@ -5,7 +5,9 @@ import noMovies from '../mocks/no-results.json'
 export function useMovies ({ query }) {
   const [response, setResponse] = useState([])
 
-  const rawMovies = withMovies.Search
+  const rawMovies = response.Response === 'True' 
+  ? response.Search 
+  : []
 
   const mappedMovies = rawMovies.map(movie => ({
     id: movie.imdbID,
@@ -15,6 +17,9 @@ export function useMovies ({ query }) {
   }))
 
   const getMovies = () => {
+    console.log(`getMovies llamado con ${query}`)
+    const bool = query ? true : false
+    console.log(bool)
     if (query) {
       setResponse(withMovies)
     }else {
