@@ -52,7 +52,7 @@ main {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fit, 150px 30px 400px);
+  grid-template-rows: repeat(auto-fit, 150px 30px 420px);
   gap: 1dvh;
 }
 
