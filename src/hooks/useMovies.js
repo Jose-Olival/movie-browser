@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import withMovies from '../mocks/with-results.json'
 import noMovies from '../mocks/no-results.json'
+
+const SEARCH_MOVIES_API_KEY = '428d3160'
+const SEARCH_MOVIES_API_URL = 'https://www.omdbapi.com/?apikey=[key]&s=[query]'
 
 export function useMovies ({ query }) {
   const [response, setResponse] = useState([])
@@ -16,12 +18,16 @@ export function useMovies ({ query }) {
     poster: movie.Poster
   }))
 
-  const getMovies = () => {
-    console.log(`getMovies llamado con ${query}`)
-    const bool = query ? true : false
-    console.log(bool)
+  const getMovies = () => { 
+    const url = SEARCH_MOVIES_API_URL
+      .replace("[key]", SEARCH_MOVIES_API_KEY)
+      .replace("[query]", query)
     if (query) {
-      setResponse(withMovies)
+      fetch(url)
+        .then(res => res.json())
+        .then(json => {
+          setResponse(json)
+        })
     }else {
       setResponse(noMovies)
     }

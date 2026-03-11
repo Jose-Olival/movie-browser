@@ -9,7 +9,6 @@ function Movie({ movie }) {
 }
 
 export function MovieList({ movies }) {
-  console.log(movies)
   return (
     <ul className="movie-list">
       {movies.length > 0 ? (
