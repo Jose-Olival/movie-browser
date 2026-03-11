@@ -1,9 +1,8 @@
 import MovieList from './componets/MovieList'
-import withMovies from './mocks/with-results.json'
-// import noMovies from './mocks/no-results.json'
+import { useMovies } from './hooks/useMovies'
 
 function App() {
-  const movies = withMovies.Search
+  const { movies } = useMovies()
 
   return (
     <div className="page">
