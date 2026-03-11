@@ -10,7 +10,7 @@ function Movie({ movie }) {
 
 export function MovieList({ movies }) {
   return (
-    <ul>
+    <ul className="movie-list">
       {movies.length > 0 ? (
         movies.map((movie) => <Movie key={movie.id} movie={movie} />)
       ) : (
