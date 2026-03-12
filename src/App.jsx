@@ -42,7 +42,6 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('llamando a get movies')
     getMovies()
   }
 
