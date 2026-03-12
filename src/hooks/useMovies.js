@@ -17,7 +17,6 @@ export function useMovies ({ query, sort }) {
       : yearB > yearA ? 1 
       : 0
     })
-    
   }
 
   const getMovies = async () => { 
@@ -25,7 +24,7 @@ export function useMovies ({ query, sort }) {
     previousQuery.current = query
     const rawMovies = await searchMovies({query})
     const newMovies = sort ? sortMovies(rawMovies) : rawMovies
-    setMovies(newMovies)
+    setMovies(newMovies,)
   }
 
   return { movies, getMovies }
