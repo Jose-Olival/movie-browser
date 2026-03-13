@@ -22,10 +22,12 @@ export function useMovies ({ query, sort }) {
   const getMovies = async () => { 
     if (query === previousQuery.current) return
     previousQuery.current = query
-    const rawMovies = await searchMovies({query})
-    const newMovies = sort ? sortMovies(rawMovies) : rawMovies
-    setMovies(newMovies,)
+    const newMovies = await searchMovies({query})
+    setMovies(newMovies)
   }
+  
+  const sortedMovies = sort 
+  ? sortMovies([...movies]) : movies
 
-  return { movies, getMovies }
+  return { movies: sortedMovies, getMovies }
 }
